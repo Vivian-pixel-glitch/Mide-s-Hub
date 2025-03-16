@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - My E-Commerce</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="../othercsspages/blogs.css">
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="../index.html">
+            <img class="logo" src="../images/plogo.png" alt="">
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+               <p>> Blog</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav> 
+
+    <div class="container mt-4">
+        <div class="d-flex justify-content-between align-items-center">
+            <h2>Our Latest Blog Posts</h2>
+            <!-- Dark Mode Toggle Button -->
+            <button id="darkModeToggle" class="btn btn-dark">🌙 Dark Mode</button>
+        </div>
+
+        <!-- Blog Search Bar -->
+        <div class="search-bar my-4">
+            <input type="text" id="blogSearch" class="form-control" placeholder="Search blog posts...">
+        </div>
+
+        <!-- Featured Blog Posts -->
+        <div class="row" id="blogList">
+            <div class="col-md-4 blog-item">
+                <div class="card blog-card">
+                    <img src="../images/image copy 2.png" class="card-img-top" alt="Jewelry Trends">
+                    <div class="card-body">
+                        <h5 class="card-title">Top Handbags Trends in 2025</h5>
+                        <p class="card-text">👜 Discover the latest trends in luxury handbags – From timeless classics to modern statement pieces, explore the finest collection of leather, suede, and designer bags that elevate your style effortlessly....</p>
+                        <a href="#" class="btn btn-primary btn-sm">Read More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 blog-item">
+                <div class="card blog-card">
+                    <img src="../images/image copy 3.png" class="card-img-top" alt="Fashion">
+                    <div class="card-body">
+                        <h5 class="card-title">5 Fashion Tips for Every Season</h5>
+                        <p class="card-text">Stay stylish all year round with these simple but effective fashion tips...</p>
+                        <a href="#" class="btn btn-primary btn-sm">Read More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 blog-item">
+                <div class="card blog-card">
+                    <img src="../images/image copy 4.png" class="card-img-top" alt="Tech">
+                    <div class="card-body">
+                        <h5 class="card-title">Smart Watches: Are They Worth It?</h5>
+                        <p class="card-text">We take a deep dive into the latest smartwatches and their features...</p>
+                        <a href="#" class="btn btn-primary btn-sm">Read More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Categories -->
+        <h3 class="mt-5">Categories</h3>
+        <div class="d-flex gap-3">
+            <a href="#" class="btn btn-outline-primary">Jewelry</a>
+            <a href="#" class="btn btn-outline-secondary">Fashion</a>
+            <a href="#" class="btn btn-outline-success">Tech</a>
+            <a href="#" class="btn btn-outline-warning">Gift Ideas</a>
+        </div>
+
+    </div>
+
+    <!-- JavaScript for Dark Mode & Search -->
+    <script>
+        // Dark Mode Toggle
+        const toggleButton = document.getElementById("darkModeToggle");
+        const body = document.body;
+
+        // Check Local Storage for saved mode
+        if (localStorage.getItem("darkMode") === "enabled") {
+            body.classList.add("dark-mode");
+            toggleButton.textContent = "☀️ Light Mode";
+            toggleButton.classList.replace("btn-dark", "btn-light");
+        }
+
+        toggleButton.addEventListener("click", () => {
+            body.classList.toggle("dark-mode");
+
+            if (body.classList.contains("dark-mode")) {
+                localStorage.setItem("darkMode", "enabled");
+                toggleButton.textContent = "☀️ Light Mode";
+                toggleButton.classList.replace("btn-dark", "btn-light");
+            } else {
+                localStorage.setItem("darkMode", "disabled");
+                toggleButton.textContent = "🌙 Dark Mode";
+                toggleButton.classList.replace("btn-light", "btn-dark");
+            }
+        });
+
+        // Blog Search Function
+        document.getElementById("blogSearch").addEventListener("input", function() {
+            let searchQuery = this.value.toLowerCase();
+            let blogItems = document.querySelectorAll(".blog-item");
+
+            blogItems.forEach(item => {
+                let title = item.querySelector(".card-title").textContent.toLowerCase();
+                let text = item.querySelector(".card-text").textContent.toLowerCase();
+
+                if (title.includes(searchQuery) || text.includes(searchQuery)) {
+                    item.style.display = "block";
+                } else {
+                    item.style.display = "none";
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
+

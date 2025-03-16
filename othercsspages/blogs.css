@@ -1,0 +1,44 @@
+body {
+    background-color: #f8f9fa;
+    transition: background 0.3s, color 0.3s;
+}
+.logo{
+    width: 3rem;
+}
+.navbar{
+/* background-color: black; */
+border-bottom: 2px solid slategray;
+}
+.logintext{
+    text-align: center;
+}
+.blog-card {
+    border-radius: 10px;
+    /* overflow: hidden; */
+    transition: 0.3s;
+}
+.blog-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 5px 15px rgba(0,0,0,0.2);
+}
+.search-bar {
+    max-width: 500px;
+    margin: auto;
+}
+/* Dark Mode Styles */
+body.dark-mode {
+    background-color: #121212;
+    color: #f1f1f1;
+}
+.dark-mode .card {
+    background-color: #1e1e1e;
+    color: #f1f1f1;
+}
+.dark-mode .btn-outline-primary {
+    border-color: #f1f1f1;
+    color: #f1f1f1;
+}
+.dark-mode .btn-outline-primary:hover {
+    background-color: #f1f1f1;
+    color: #121212;
+}
