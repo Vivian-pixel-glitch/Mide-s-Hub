@@ -26,13 +26,17 @@
         }
     </style>
 </head>
-<body>
-    <h1>Welcome to Your Cart</h1>
+<body> 
+     <h1>Welcome to Your Cart</h1>
     <div id="cartItems"></div>
     <h3>Total: $<span id="cartTotal">0.00</span></h3>
-    <button onclick="clearCart()">Clear Cart</button>
+    <button onclick="clearCart()">Clear Cart</button> 
 
-    <script>
+
+   
+    
+
+ <script>
         function fetchCartItems() {
             let cart = JSON.parse(localStorage.getItem("cart")) || [];
             let cartContainer = document.getElementById("cartItems");
