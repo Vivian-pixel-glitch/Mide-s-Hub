@@ -32,7 +32,7 @@
             <a class="nav-link" href="./otherhtmlpages/faq.html">FaQs</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="./otherhtmlpages/blogs.html">Blogs</a>
+            <a class="nav-link" href="../otherhtmlpages/blogs.html">Blogs</a>
           </li>  <li class="nav-item">
             <a class="nav-link" href="./otherhtmlpages/shop.html">Shops</a>
           </li>
@@ -338,39 +338,39 @@
 
 const products = [
     {
-        title: "Body Spray",
+        title: "Hoodie",
         image: "../images/image copy 8.png"
     },
     {
-        title: "Body Spray",
+        title: "Denim jean",
         image: "../images/image copy 10.png"
     },
     {
-        title: "Body Spray",
+        title: "Hair clip",
         image: "../images/image copy 16.png"
     },
     {
-        title: "Body Spray",
+        title: "Wears",
         image: "../images/image copy 17.png"
     },
     {
-        title: "Body Spray",
+        title: "Shoes",
         image: "../images/image copy 18.png"
     }, 
     {
-        title: "Body Spray",
+        title: "Gown",
         image: "../images/image copy 19.png"
     }, 
     {
-        title: "Body Spray",
+        title: "Denim jean",
         image: "../images/image copy 20.png"
     },
     {
-        title: "Body Spray",
+        title: "Bottle",
         image: "../images/image copy 21.png"
     },
     {
-        title: "Body Spray",
+        title: "Shoe",
         image: "../images/image copy 22.png"
     },
 
@@ -509,19 +509,19 @@ const products = [
         link: "#"
     },
     {
-        title: "Body Spray",
+        title: "Lip gloss",
         image: "../images/image copy 11.png"
     },
     {
-        title: "Body Spray",
+        title: "Shoes",
         image: "../images/image copy 22.png"
     },
     {
-        title: "Body Spray",
+        title: "Baggy trouser",
         image: "../images/image copy 23.png"
     },
     {
-        title: "Body Spray",
+        title: "Fancy bottle",
         image: "../images/image copy 24.png"
     }
 ];
@@ -641,6 +641,8 @@ function addToCart(productIndex) {
 
     localStorage.setItem("cart", JSON.stringify(cart));
     updateCartCount();
+
+    alert(`${product.title} has been added to your cart!`);
 }
 
 
