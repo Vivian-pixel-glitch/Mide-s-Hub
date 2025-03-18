@@ -1,169 +1,94 @@
-body{
-    background-color: black;
-    color: white;
-    font-family: "Garamond", serif;
-    font-family: 'Roboto', sans-serif;
-    overflow-x: hidden;
-
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
-img {
-    width: 100%; 
-    height: 450px; 
-    object-fit: cover; 
-    display: block;
-    margin: 0 auto;
+body {
+    background-color: black;
+    background-image:url('../images/image\ copy\ 50.png');
+    color: white;
+    font-family: 'Roboto', sans-serif;
+}
+section{
+    display: flex;
 }
 h1{
     text-align: center;
-    font-weight: 600;
-    font-size: 800;
-    /* font-family: 'Poppins', sans-serif; */
-}
-h4{
-    text-align: center;
-    font-weight: 600;
-    font-size: 800;
     font-family: 'Poppins', sans-serif;
-
-
-}
-h5{
-    text-align: center;
-    font-family: 'Poppins', sans-serif;
-
-}
-h6{
-    font-family: 'Tangerine', cursive;
-    font-size: 5rem;
-    text-align: end;
+    font-size: 3rem; /* Adjust size as needed */
+    text-shadow:  
+    3px 3px 5px rgba(0, 0, 0, 0.7), /* Black shadow */
+    -2px -2px 5px rgba(255, 215, 0, 0.6); /* Gold glow */
+    text-shadow:  
+    4px 4px 6px rgba(0, 0, 0, 0.8),  
+    0px 0px 10px rgba(255, 215, 0, 0.9);
 
 }
-.card-container{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 2rem;
+
+.form-container{
+    width: 500px;
+    height: 580px;
+    border: 2px solid #DEE2E6;
+    margin: auto;
+    margin-top: 0;
+    padding: 0.3rem;
+    border-radius: 0.8rem;
+    margin-top: 1.5rem;
+    /* box-shadow: 0px 0px  15px 5px rgba(255, 215, 0, 0.7); */
 }
-.card-body{
-    background-color: black;
+.form-control {
+    background: transparent !important; /* Fully transparent background */
+    color: white !important; /* White text when typing */
+    border: 2px solid rgba(255, 255, 255, 0.5) !important; /* Semi-transparent border */
+}
+
+/* Placeholder text color */
+.form-control::placeholder {
+    color: white!important; /* Lighter white */
+    font-size: 0.9rem;
+}
+
+/* Remove input focus blue outline */
+.form-control:focus {
+    box-shadow: none !important;
+    border-color: rgba(255, 255, 255, 0.8) !important;
+}
+.form-label{
+    font-size: 1.3rem;
+}
+.form-text{
     color: white;
 }
-.card{
-    transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
-}
-.card:hover{
- 
-    transform: translateY(-5px) scale(1.05);
-    /* box-shadow: 
-    0px 10px 20px rgba(0, 0, 0, 0.6),
-    0px 10px 30px rgba(255, 215, 0, 0.8);  */
 
+.loginbtn {
+    width: 8rem !important;  /* Adjust width */
+    height: 3rem !important; /* Adjust height */
+    font-size: 1rem !important; /* Make text readable */
+    background-color: white;
+    border-radius: 5px !important; /* Optional: Rounded corners */
+    border: 2px solid black;
 
 }
 .logo{
-    width: 70px;
-    height: 40px;
+    width: 1rem;
+    height: 2.5rem;
 }
-.hero {
-    position: relative;
-    width: 100%;
-    /* height: 100vh;  */
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.navbar{
+background-color: black;
+border-bottom: 2px solid slategray;
+}
+.logintext{
     text-align: center;
-    padding: 20px;
 }
-
-.bimg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover; 
-    opacity: 0.3;
-    z-index: 1;
-}
-
-.hero-text {
-    position: relative;
-    z-index: 2;
-    color: white;
-    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7); 
-    max-width: 80%;
-}
-
-.feature{
-    /* margin-top: 15rem; */
-    padding: 5rem 0;
-}
-
-.card-container {
-    max-width: 90%;
-    margin: 0 auto;
-}
-
-.product-card {
-    width: 100%;
-}
-footer {
-    /* background: white; */
-    color: white;
-    padding: 20px;
-    text-align: center;
-    border-top: 2px solid slategrey;
-    margin-top: 2rem;
-}
-
-.footer-container {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-}
-
-.footer-section {
-    margin: 10px;
-}
-
-.footer-bottom {
-    margin-top: 20px;
-    font-size: 0.8rem;
+.loginbtn{
+    border-radius: 0.5rem;
+    outline: none;
+    border: none;
 }
 a{
+    color:black;
     text-decoration: none;
-    color: white;
 }
-.footer-text{
-    font-size: 1.2rem;
+.error-message{
+    color: red;
 }
-
-
-@media (min-width: 768px) { /* Tablets and larger */
-    .product-card {
-        width: 18rem;
-    }
-}
-.footer-links{
-    font-size: 1.4rem;
-}
-.about-us{
-    border: 2px solid grey;
-    margin-top: 2rem;
-    font-style: 1.4rem;
-    background-color: black;
-    color:white;
-    margin-left: 4rem;
-    margin-right: 8rem;
-}
-.reasons{
-    text-align: left;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 600;
-    font-family:Roboto, -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
-    font-size:15px;
-}
-
-
-  
-  
