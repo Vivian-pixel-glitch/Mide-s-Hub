@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Tangerine:wght@400;700&display=swap" rel="stylesheet">
     <title>Shopping Cart</title>
     <style>
         *{
@@ -28,10 +29,17 @@
             border: none;
             padding: 5px;
         }
+        h1{
+        text-align: center;
+    /* font-weight: 600; */
+    font-size: 3rem;
+    font-family: 'Tangerine', cursive;
+    /* font-family: 'Poppins', sans-serif; */
+}
     </style>
 </head>
 <body> 
-     <h1>Welcome to Your Cart</h1>
+     <h1>Welcome to Your Cart Page</h1>
     <div id="cartItems"></div>
     <h3>Total: $<span id="cartTotal">0.00</span></h3>
     <button onclick="clearCart()">Clear Cart</button> 

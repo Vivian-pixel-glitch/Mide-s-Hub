@@ -329,8 +329,12 @@
     <p class="footer-bottom">© 2025 Randy'sPlace. All rights reserved.</p>
 </footer> -->
 
+<p id="totalPrice">Total: $0</p>
+<div id="cart-items"></div>
+<button onclick="clearCart()">Clear Cart</button>
 
 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 <script>
@@ -339,192 +343,156 @@
 const products = [
     {
         title: "Hoodie",
-        image: "../images/image copy 8.png"
+        image: "../images/image copy 8.png",
+        price: "$40"
     },
     {
         title: "Denim jean",
-        image: "../images/image copy 10.png"
+        image: "../images/image copy 10.png",
+        price: "$50"
     },
     {
         title: "Hair clip",
-        image: "../images/image copy 16.png"
+        image: "../images/image copy 16.png",
+        price: "$10"
     },
     {
         title: "Wears",
-        image: "../images/image copy 17.png"
+        image: "../images/image copy 17.png",
+        price: "$45"
     },
     {
         title: "Shoes",
-        image: "../images/image copy 18.png"
+        image: "../images/image copy 18.png",
+        price: "$55"
     }, 
     {
         title: "Gown",
-        image: "../images/image copy 19.png"
+        image: "../images/image copy 19.png",
+        price: "$60"
     }, 
     {
         title: "Denim jean",
-        image: "../images/image copy 20.png"
+        image: "../images/image copy 20.png",
+        price: "$50"
     },
     {
         title: "Bottle",
-        image: "../images/image copy 21.png"
+        image: "../images/image copy 21.png",
+        price: "$15"
     },
     {
         title: "Shoe",
-        image: "../images/image copy 22.png"
+        image: "../images/image copy 22.png",
+        price: "$55"
     },
-
-    
     {
         title: "Lip Gloss",
         image: "../images/plipgloss.png",
-        // description: "Enhance your lips with our glossy, hydrating lip glosses...",
-        // fullDescription: "Packed with nourishing ingredients, they provide a lasting shine and smooth texture. Perfect for any occasion!",
-        // link: "#"
+        price: "$8"
     },
     {
         title: "Pendant",
         image: "../images/ppendant.png",
-        // description: "Elevate your style with our elegant pendants, crafted for sophistication...",
-        // fullDescription: "Designed with premium materials, each piece adds a touch of class and beauty to your look. A perfect accessory for any outfit!",
-        // link: "#"
+        price: "$25"
     },
     {
         title: "Knuckle Ring",
         image: "../images/pknuclering.png",
-        description: "Add elegance to your hands with our stylish knuckle rings...",
-        fullDescription: "Crafted with precision and designed for comfort, these rings are perfect for layering or wearing solo. Elevate your fashion game with a touch of sophistication.",
-        link: "#"
+        price: "$20"
     },
     {
         title: "Perfume",
         image: "../images/pperfume.png",
-        description: "Experience luxury in every spray with our exquisite perfumes...",
-        fullDescription: "Designed to leave a lasting impression, our fragrances are crafted with the finest ingredients, ensuring a captivating scent all day long. Choose sophistication, choose elegance.",
-        link: "#"
+        price: "$30"
     },
     {
         title: "Air Pod",
         image: "../images/pairpod.png",
-        description: "Immerse yourself in crystal-clear sound with our premium AirPods...",
-        fullDescription: "Featuring noise cancellation and seamless connectivity, these AirPods provide the ultimate audio experience. Stay wireless, stay connected, and enjoy music like never before.",
-        link: "#"
+        price: "$100"
     },
     {
         title: "Sweat Vest",
         image: "../images/psweatvest.png",
-        description: "Achieve your fitness goals with our high-performance sweat vests...",
-        fullDescription: "Designed to enhance sweating and boost calorie burn, these vests help you stay in shape while ensuring comfort and style. Perfect for workouts or daily wear!",
-        link: "#"
+        price: "$35"
     },
     {
         title: "Jewelry",
         image: "../images/pjewellry.png",
-        description: "Elevate your elegance with our stunning jewelry collection...",
-        fullDescription: "Crafted with precision and luxury, each piece adds a touch of sophistication and charm to your look. Perfect for any occasion!",
-        link: "#"
+        price: "$45"
     },
     {
         title: "Eye Shadow",
         image: "../images/peyeshadow.png",
-        description: "Unleash your creativity with our high-pigment eyeshadow palettes...",
-        fullDescription: "With rich, blendable shades, you can achieve any look from subtle elegance to bold drama. Long-lasting and perfect for any occasion!",
-        link: "#"
+        price: "$20"
     },
     {
         title: "Wrist Watch",
         image: "../images/pwristwatch.png",
-        description: "Some quick example text to build on the card title...",
-        fullDescription: "A stylish and functional timepiece to complement your daily outfits.",
-        link: "#"
-    },
-    {
-        title: "Hoodie",
-        image: "../images/phoodie.png",
-        description: "Some quick example text to build on the card title...",
-        fullDescription: "Stay warm and stylish with our premium-quality hoodies.",
-        link: "#"
+        price: "$50"
     },
     {
         title: "Earrings",
         image: "../images/pearrings.png",
-        description: "Some quick example text to build on the card title...",
-        fullDescription: "Beautifully crafted earrings to complete your look.",
-        link: "#"
+        price: "$30"
     },
     {
         title: "Headset",
         image: "../images/pheadset.png",
-        description: "Some quick example text to build on the card title...",
-        fullDescription: "Experience top-quality sound with our premium headsets.",
-        link: "#"
+        price: "$80"
     },
     {
         title: "Television",
         image: "../images/tv.png",
-        description: "Some quick example text to build on the card title...",
-        fullDescription: "Enjoy high-definition entertainment with our latest TVs.",
-        link: "#"
+        price: "$500"
     },
     {
         title: "Sportwear",
         image: "../images/psportwears.png",
-        description: "Some quick example text to build on the card title...",
-        fullDescription: "Stay active and stylish with our premium sportwear.",
-        link: "#"
+        price: "$40"
     },
     {
         title: "Shoes",
         image: "../images/pshoe.png",
-        description: "Some quick example text to build on the card title...",
-        fullDescription: "Step in comfort and style with our trendy shoe collection.",
-        link: "#"
+        price: "$60"
     },
     {
         title: "Phones",
         image: "../images/iphone11.png",
-        description: "Some quick example text to build on the card title...",
-        fullDescription: "Explore the latest smartphones with advanced features.",
-        link: "#"
+        price: "$700"
     },
     {
         title: "Fancy Hand Bags",
         image: "../images/bags.png",
-        description: "Some quick example text to build on the card title...",
-        fullDescription: "Carry your essentials in style with our elegant handbags.",
-        link: "#"
+        price: "$50"
     },
     {
         title: "Crocs",
         image: "../images/pcrocs.png",
-        description: "Some quick example text to build on the card title...",
-        fullDescription: "Lightweight and comfortable footwear for every occasion.",
-        link: "#"
+        price: "$30"
     },
     {
-      title: "Heels",
+        title: "Heels",
         image: "../images/pheels.png",
-        description: "Some quick example text to build on the card title...",
-        fullDescription: "Lightweight and comfortable footwear for every occasion.",
-        link: "#"
+        price: "$60"
     },
     {
         title: "Lip gloss",
-        image: "../images/image copy 11.png"
-    },
-    {
-        title: "Shoes",
-        image: "../images/image copy 22.png"
+        image: "../images/image copy 11.png",
+        price: "$8"
     },
     {
         title: "Baggy trouser",
-        image: "../images/image copy 23.png"
+        image: "../images/image copy 23.png",
+        price: "$50"
     },
     {
         title: "Fancy bottle",
-        image: "../images/image copy 24.png"
+        image: "../images/image copy 24.png",
+        price: "$20"
     }
 ];
+
 
 
 
@@ -548,7 +516,9 @@ const container = document.querySelector('#card-container');
 //     }
 // });
 
-products.forEach((product,i) => {
+
+// Loop through products and display them
+products.forEach((product, i) => {
     const card = document.createElement('div');
     card.classList.add('card', 'product-card');
 
@@ -556,67 +526,17 @@ products.forEach((product,i) => {
         <a href="${product.link}"><img src="${product.image}" class="card-img-top" alt="${product.title}"></a>
         <div class="card-body">
             <h5 class="card-title">${product.title}</h5>
-            <button  class="btn btn-primary"  onclick="addToCart('${i}')">Add to Cart</button>
-            </div>
-            `;
-            // <p class="card-text">
-              // ${product.description}
-              // <span class="dots">...</span>
-              // <span class="more-text" style="display:none;">
-                //   ${product.fullDescription}
-                // </span>
-                // <a class="readMoreBtn" style="color: gold; cursor: pointer;">Read More</a>"
-                // </p>
-                // "
+            <p class="card-text"><strong>Price: ${product.price}</strong></p>
+            <button class="btn btn-primary" onclick="addToCart(${i})">Add to Cart</button>
+        </div>
+    `;
 
     container.appendChild(card);
 });
 
-// Function to add an item to the cart
-function addToCart(productId, productName, productPrice, productImage) {
-    // Get the cart from localStorage or initialize an empty array
-    let cart = JSON.parse(localStorage.getItem("cart")) || [];
-
-    // Check if the item is already in the cart
-    let existingItem = cart.find(item => item.id === productId);
-
-    if (existingItem) {
-        // If item exists, increase quantity
-        existingItem.quantity += 1;
-    } else {
-        // If item doesn't exist, add a new one
-        cart.push({
-            id: productId,
-            name: productName,
-            price: productPrice,
-            image: productImage,
-            quantity: 1
-        });
-    }
-
-    // Save the updated cart back to localStorage
-    localStorage.setItem("cart", JSON.stringify(cart));
-
-    // Update the cart count display
-    updateCartCount();
-}
-
-// Function to update cart item count in the UI
-function updateCartCount() {
-    let cart = JSON.parse(localStorage.getItem("cart")) || [];
-    let totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-
-    // Update cart count in the UI
-    document.getElementById("cartCount").textContent = totalItems;
-}
-
-// Call updateCartCount on page load to refresh the count
-// document.addEventListener("DOMContentLoaded", updateCartCount);
-// 
-
-
+// Add to Cart Function
 function addToCart(productIndex) {
-    const product = products[productIndex]; // Get product from array
+    const product = products[productIndex];
 
     if (!product) {
         console.error("Product not found at index:", productIndex);
@@ -633,7 +553,7 @@ function addToCart(productIndex) {
         cart.push({
             id: productIndex,
             name: product.title,
-            // price: product.price, // Assuming price exists in products array
+            price: parseFloat(product.price.replace("$", "")), // Convert to number
             image: product.image,
             quantity: 1
         });
@@ -641,10 +561,46 @@ function addToCart(productIndex) {
 
     localStorage.setItem("cart", JSON.stringify(cart));
     updateCartCount();
+    calculateTotal();
 
     alert(`${product.title} has been added to your cart!`);
 }
 
+// Update Cart Count
+function updateCartCount() {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    let totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+
+    let cartCountElement = document.getElementById("cartCount");
+    if (cartCountElement) {
+        cartCountElement.textContent = totalItems;
+    }
+}
+
+// Calculate and Display Total Price
+function calculateTotal() {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    let total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+
+    let totalPriceElement = document.getElementById("totalPrice");
+    if (totalPriceElement) {
+        totalPriceElement.textContent = `Total: $${total.toFixed(2)}`;
+    }
+}
+
+// Clear Cart Function
+function clearCart() {
+    localStorage.removeItem("cart");
+    updateCartCount();
+    calculateTotal();
+    document.getElementById("cart-items").innerHTML = ""; // Clear displayed cart items
+}
+
+// Load Cart on Page Load
+document.addEventListener("DOMContentLoaded", () => {
+    updateCartCount();
+    calculateTotal();
+});
 
 </script>
 </html>
