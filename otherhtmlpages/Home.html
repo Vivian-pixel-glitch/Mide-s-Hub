@@ -58,6 +58,7 @@
                       <path d="M1 1h4l2 10h13"></path>
                       <path d="M7 16h14l3-8H5"></path>
                   </svg>
+                  <span id="cartCount" class="counter ms-1">0</span> 
               </a>
           </li>
       </ul>
@@ -112,16 +113,11 @@
     
     
     
-     <div class="feature">
   <h4>FEATURED PRODUCTS</h4>
+  <div id="card-container" class="card-container"></div>
 
 
-  <div id="card-container" class="card-container">
-    
-  </div>
-
-
-  <!-- <div class="about-us"> -->
+  <div class="about-us">
   
 
   <h5>Why Choose Randy's place for Your Health and Beauty Needs? </h5>
@@ -147,10 +143,9 @@
  When you shop with us, you're not just buying a product—you’re investing in quality, trust, and an exceptional shopping experience. ❤️
  
   
- 
-<!-- </div> -->
+ </div>
 
-  <!-- <div class="card-container">
+ <!-- <div class="card-container"> 
 
      <div class="card" style="width: 18rem;">
       <img src="images/pbodyspray.png" class="card-img-top" alt="...">
@@ -367,7 +362,7 @@
       </div>
     </div>
 </div>
-</div> -->
+</div>  -->
 
 
 
@@ -409,21 +404,24 @@ const products = [
         image: "../images/image copy 14.png",
         description: "Stay fresh and confident all day with our premium body sprays",
         fullDescription: "Infused with long-lasting fragrances, they keep you smelling irresistible from morning to night. Elevate your scent game with a touch of luxury!",
-        // link: "#"
+        link: "#",
+        price:"$10"
     },
     {
         title: "Lip Gloss",
         image: "../images/image copy 6.png",
         description: "Enhance your lips with our glossy, hydrating lip glosses",
         fullDescription: "Packed with nourishing ingredients, they provide a lasting shine and smooth texture. Perfect for any occasion!",
-        link: "#"
+        link: "#",
+        price:"$10"
     },
     {
         title: "Pendant",
         image: "../images/image copy 15.png",
         description: "Elevate your style with our elegant pendants, crafted for sophistication",
         fullDescription: "Designed with premium materials, each piece adds a touch of class and beauty to your look. A perfect accessory for any outfit!",
-        link: "#"
+        link: "#",
+        price:"$10"
     },
     {
         title: "Shoe",
@@ -493,12 +491,14 @@ products.forEach((product,i) => {
         <div class="card-body">
             <h5 class="card-title">${product.title}</h5>
             <p class="card-text">
-                "${product.description}
+                ${product.description}
                 <span class="dots">...</span>
                 <span class="more-text" style="display:none;">
                     ${product.fullDescription}
                 </span>
                 <a class="readMoreBtn" style="color: gold; cursor: pointer;">Read More</a>"
+                 <p class="card-text"><strong>Price: ${product.price}</strong></p>
+            <button class="btn btn-primary" onclick="addToCart(${i})">Add to Cart</button>
             </p>
             </div>
             `;
@@ -508,50 +508,9 @@ products.forEach((product,i) => {
 });
 
 // Function to add an item to the cart
-function addToCart(productId, productName, productPrice, productImage) {
-    // Get the cart from localStorage or initialize an empty array
-    let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-    // Check if the item is already in the cart
-    let existingItem = cart.find(item => item.id === productId);
-
-    if (existingItem) {
-        // If item exists, increase quantity
-        existingItem.quantity += 1;
-    } else {
-        // If item doesn't exist, add a new one
-        cart.push({
-            id: productId,
-            name: productName,
-            price: productPrice,
-            image: productImage,
-            quantity: 1
-        });
-    }
-
-    // Save the updated cart back to localStorage
-    localStorage.setItem("cart", JSON.stringify(cart));
-
-    // Update the cart count display
-    updateCartCount();
-}
-
-// Function to update cart item count in the UI
-function updateCartCount() {
-    let cart = JSON.parse(localStorage.getItem("cart")) || [];
-    let totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-
-    // Update cart count in the UI
-    document.getElementById("cartCount").textContent = totalItems;
-}
-
-// Call updateCartCount on page load to refresh the count
-// document.addEventListener("DOMContentLoaded", updateCartCount);
-// 
-
-
-function addToCart(productIndex) {
-    const product = products[productIndex]; // Get product from array
+window.addToCart = function (productIndex) {
+    const product = products[productIndex];
 
     if (!product) {
         console.error("Product not found at index:", productIndex);
@@ -568,7 +527,7 @@ function addToCart(productIndex) {
         cart.push({
             id: productIndex,
             name: product.title,
-            // price: product.price, // Assuming price exists in products array
+            price: parseFloat(product.price.replace("$", "")), // Convert to number
             image: product.image,
             quantity: 1
         });
@@ -576,7 +535,33 @@ function addToCart(productIndex) {
 
     localStorage.setItem("cart", JSON.stringify(cart));
     updateCartCount();
-}
+    calculateTotal();
+
+    alert(`${product.title} has been added to your cart!`);
+};
+
+
+window.updateCartCount = function () {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    let totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+
+    let cartCountElement = document.getElementById("cartCount");
+    if (cartCountElement) {
+        cartCountElement.textContent = totalItems;
+    }
+};
+
+window.calculateTotal = function () {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    let total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+
+    let totalPriceElement = document.getElementById("totalPrice");
+    if (totalPriceElement) {
+        totalPriceElement.textContent = `Total: $${total.toFixed(2)}`;
+    }
+};
+
+document.addEventListener("DOMContentLoaded", updateCartCount);
 
 
 </script>
