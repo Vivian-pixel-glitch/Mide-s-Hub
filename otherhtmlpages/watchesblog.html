@@ -34,7 +34,7 @@
           <li class="nav-item">
             <a class="nav-link" href="./blogs.html">Blogs</a>
           </li>  <li class="nav-item">
-            <a class="nav-link" href="./otherhtmlpages/shop.html">Shops</a>
+            <a class="nav-link" href="./shop.html">Shops</a>
           </li>
          
             </ul>
@@ -93,35 +93,50 @@
 
 const products = [
     {
-        title: "",
-        image: "../images/image copy 35.png"
+        title: "Luxury Gold & Black Stainless Steel Watch",
+        image: "../images/image copy 35.png",
+        price:"$250"
     },
     {
-        title: "",
-        image: "../images/image copy 36.png"
+        title: "Classic Two-Tone Business Watch",
+        image: "../images/image copy 36.png",
+        price:"$270"
+
     }, 
     {
-        title: "",
-        image: "../images/image copy 37.png"
+        title: "Rolex Daytona Chronograph Watch ",
+        image: "../images/image copy 37.png",
+        price:"$12,000"
+
     }, 
     {
-        title: "",
-        image: "../images/image copy 38.png"
+        title: "Rolex Green Dial Jubilee Watch",
+        image: "../images/image copy 38.png",
+        price:"$9,500"
+
     },
     {
-        title: "",
-        image: "../images/image copy 39.png"
+        title: "Rolex Black Milgauss Watch",
+        image: "../images/image copy 39.png",
+        price:"$8,500"
+        
     }, {
-        title: "",
-        image: "../images/image copy 40.png"
+        title: "Rose Gold Smartwatch ",
+        image: "../images/image copy 40.png",
+        price:"$350"
+        
     }, 
     {
-        title: "",
-        image: "../images/image copy 41.png"
+        title: "Luxury Gold & Blue Diamond Watch ",
+        image: "../images/image copy 41.png",
+        price:"$400"
+
     },
     {
-        title: "",
-        image: "../images/image copy 42.png"
+        title: "Rado Gold & Black Jubilee Watch ",
+        image: "../images/image copy 42.png",
+        price:"$1,200"
+
     }
 ];
 
@@ -139,6 +154,7 @@ products.forEach((product,i) => {
         <a href="${product.link}"><img src="${product.image}" class="card-img-top" alt="${product.title}"></a>
         <div class="card-body">
             <h5 class="card-title">${product.title}</h5>
+               <p class="card-text"><strong>Price: ${product.price}</strong></p>
             <button  class="btn btn-primary"  onclick="addToCart('${i}')">Add to Cart</button>
             </div>
             `;
@@ -185,21 +201,8 @@ function addToCart(productId, productName, productPrice, productImage) {
 }
 
 // Function to update cart item count in the UI
-function updateCartCount() {
-    let cart = JSON.parse(localStorage.getItem("cart")) || [];
-    let totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-
-    // Update cart count in the UI
-    document.getElementById("cartCount").textContent = totalItems;
-}
-
-// Call updateCartCount on page load to refresh the count
-// document.addEventListener("DOMContentLoaded", updateCartCount);
-// 
-
-
-function addToCart(productIndex) {
-    const product = products[productIndex]; // Get product from array
+window.addToCart = function (productIndex) {
+    const product = products[productIndex];
 
     if (!product) {
         console.error("Product not found at index:", productIndex);
@@ -216,7 +219,7 @@ function addToCart(productIndex) {
         cart.push({
             id: productIndex,
             name: product.title,
-            // price: product.price, // Assuming price exists in products array
+            price: parseFloat(product.price.replace("$", "")), // Convert to number
             image: product.image,
             quantity: 1
         });
@@ -224,7 +227,33 @@ function addToCart(productIndex) {
 
     localStorage.setItem("cart", JSON.stringify(cart));
     updateCartCount();
-}
+    calculateTotal();
+
+    alert(`${product.title} has been added to your cart!`);
+};
+
+
+window.updateCartCount = function () {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    let totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+
+    let cartCountElement = document.getElementById("cartCount");
+    if (cartCountElement) {
+        cartCountElement.textContent = totalItems;
+    }
+};
+
+window.calculateTotal = function () {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    let total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+
+    let totalPriceElement = document.getElementById("totalPrice");
+    if (totalPriceElement) {
+        totalPriceElement.textContent = `Total: $${total.toFixed(2)}`;
+    }
+};
+
+document.addEventListener("DOMContentLoaded", updateCartCount);
 
 
 </script>
