@@ -44,7 +44,6 @@
                 <a href="../index.html" class="login-link">Sign up</a>
             </p>
         </form>
-        
         <p id="error-message" class="error-message"></p>
     </div>
 
@@ -83,7 +82,7 @@
             .then((userCredential) => {
                 const user = userCredential.user;
                 alert("Login successful! Welcome back, " + user.email);
-                window.location.href = "dashboard.html"; 
+                window.location.href = "./Home.html"; 
             })
             .catch((error) => {
                 errorMessage.textContent = error.message;
