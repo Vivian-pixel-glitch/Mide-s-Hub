@@ -101,44 +101,55 @@
 
 const products = [
     {
-        title: "",
-        image: "../images/image copy 65.png"
+        title: "iPhone 13 Pro",
+        image: "../images/image copy 65.png",
+        price:"$999"
     },
     {
-        title: "",
-        image: "../images/image copy 66.png"
+        title: "Marshall Earbuds",
+        image: "../images/image copy 66.png",
+        price:"$249"
+
     }, 
     {
-        title: "",
-        image: "../images/image copy 67.png"
+        title: "Beats Studio3 Wireless",
+        image: "../images/image copy 67.png",
+        price:"$349"
+
     }, 
     {
-        title: "",
-        image: "../images/image copy 68.png"
+        title: "LED Ring Light",
+        image: "../images/image copy 68.png",
+        price:"$79"
+
     },
     {
-        title: "",
-        image: "../images/image copy 69.png"
+        title: "MacBook Air (Space Gray)",
+        image: "../images/image copy 69.png",
+        price:"$1,199"
+
     }, {
-        title: "",
-        image: "../images/image copy 70.png"
+        title: "iPad Pro with Magic Keyboard",
+        image: "../images/image copy 70.png",
+        price:"$999"
+
     }, 
     {
-        title: "",
-        image: "../images/image copy 71.png"
+        title: "JBL Tune 520BT Headphones (Lavender)",
+        image: "../images/image copy 71.png",
+        price:"$79"
+
     },
     {
-        title: "",
-        image: "../images/image copy 72.png"
+        title: "PlayStation DualSense Edge Controller (Customizable)",
+        image: "../images/image copy 72.png",
+        price:"$199"
     }
 ];
 
 
-
 const container = document.querySelector('#card-container');
  
-
-
 products.forEach((product,i) => {
     const card = document.createElement('div');
     card.classList.add('card', 'product-card');
@@ -147,6 +158,7 @@ products.forEach((product,i) => {
         <a href="${product.link}"><img src="${product.image}" class="card-img-top" alt="${product.title}"></a>
         <div class="card-body">
             <h5 class="card-title">${product.title}</h5>
+               <p class="card-text"><strong>Price: ${product.price}</strong></p>
             <button  class="btn btn-primary"  onclick="addToCart('${i}')">Add to Cart</button>
             </div>
             `;
@@ -193,21 +205,8 @@ function addToCart(productId, productName, productPrice, productImage) {
 }
 
 // Function to update cart item count in the UI
-function updateCartCount() {
-    let cart = JSON.parse(localStorage.getItem("cart")) || [];
-    let totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-
-    // Update cart count in the UI
-    document.getElementById("cartCount").textContent = totalItems;
-}
-
-// Call updateCartCount on page load to refresh the count
-// document.addEventListener("DOMContentLoaded", updateCartCount);
-// 
-
-
-function addToCart(productIndex) {
-    const product = products[productIndex]; // Get product from array
+window.addToCart = function (productIndex) {
+    const product = products[productIndex];
 
     if (!product) {
         console.error("Product not found at index:", productIndex);
@@ -224,7 +223,7 @@ function addToCart(productIndex) {
         cart.push({
             id: productIndex,
             name: product.title,
-            // price: product.price, // Assuming price exists in products array
+            price: parseFloat(product.price.replace("$", "")), // Convert to number
             image: product.image,
             quantity: 1
         });
@@ -232,8 +231,33 @@ function addToCart(productIndex) {
 
     localStorage.setItem("cart", JSON.stringify(cart));
     updateCartCount();
-}
+    calculateTotal();
 
+    alert(`${product.title} has been added to your cart!`);
+};
+
+
+window.updateCartCount = function () {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    let totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+
+    let cartCountElement = document.getElementById("cartCount");
+    if (cartCountElement) {
+        cartCountElement.textContent = totalItems;
+    }
+};
+
+window.calculateTotal = function () {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    let total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+
+    let totalPriceElement = document.getElementById("totalPrice");
+    if (totalPriceElement) {
+        totalPriceElement.textContent = `Total: $${total.toFixed(2)}`;
+    }
+};
+
+document.addEventListener("DOMContentLoaded", updateCartCount);
 
 </script>
 </html>
