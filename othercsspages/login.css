@@ -21,21 +21,21 @@ h1{
 
 }
 
-.form-container{
-    /* width: 580px; */
-    /* height: 300px; */
+.form-container {
+    max-width: 500px; /* Restricts form width */
+    /* padding: 2rem; */
+    width: 90%; /* Allows resizing on smaller screens */
+    margin: 2rem auto; /* Center and give top margin */
     border: 2px solid #DEE2E6;
 
-    margin: auto;
-    margin-top: 0;
-    padding: 0.3rem;
     border-radius: 0.8rem;
-    margin-top: 1.5rem;
     box-shadow: 0px 0px  15px 5px rgba(255, 215, 0, 0.7);
 
- 
+
 
 }
+
+
 .requirement{
     color: red;
     font-size: 1.2rem;
