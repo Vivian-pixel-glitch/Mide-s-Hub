@@ -6,6 +6,11 @@ body{
     overflow-x: hidden;
 
 }
+.card-title {
+    font-size: 18px; /* Adjust the size to your liking */
+    font-weight: bold; /* Optional: Keep or adjust the weight */
+}
+
 img {
     width: 100%; 
     height: 450px; 
