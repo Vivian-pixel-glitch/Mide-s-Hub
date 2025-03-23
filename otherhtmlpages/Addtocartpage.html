@@ -88,11 +88,20 @@
             localStorage.setItem("cart", JSON.stringify(cart)); // Save updated cart
             fetchCartItems(); // Refresh cart display
         }
-
         function clearCart() {
-            localStorage.removeItem("cart"); // Remove cart from storage
-            fetchCartItems(); // Refresh cart display
-        }
+    localStorage.removeItem("cart"); // Clear the cart from local storage
+    fetchCartItems(); // Refresh cart display
+
+    // Reset the total to 0.00
+    let cartTotalElement = document.getElementById("cartTotal");
+    if (cartTotalElement) {
+        cartTotalElement.textContent = "0.00";
+    }
+}
+
+
+
+
 
         // Load cart items when the page loads
         document.addEventListener("DOMContentLoaded", fetchCartItems);
