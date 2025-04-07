@@ -24,7 +24,7 @@ h1{
 
 .form-container {
     max-width: 500px; /* Restricts form width */
-    /* padding: 2rem; */
+    padding: 2rem;
     width: 90%; /* Allows resizing on smaller screens */
     margin: 2rem auto; /* Center and give top margin */
     border: 2px solid #DEE2E6;
